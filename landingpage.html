@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexcent - Find</title>
+    <title>LibriAspire - Find and Borrow Books Easily</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
         body {
@@ -17,7 +18,7 @@
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            color: #000;
+            color: #2E86AB;
             text-decoration: none;
         }
         .navbar-nav {
@@ -33,11 +34,11 @@
             transition: color 0.3s;
         }
         .navbar-nav a:hover {
-            color: #4caf4f;
+            color: #2E86AB;
         }
         .register-btn {
-            background-color: #4caf4f;
-            color: white;
+            background-color: #2E86AB;
+            color: white !important;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
@@ -49,7 +50,7 @@
             transition: background-color 0.3s;
         }
         .register-btn:hover {
-            background-color: #45a049;
+            background-color: #1E5F7E;
             color: white;
         }
         .arrow-icon {
@@ -77,8 +78,8 @@
             margin-bottom: 20px;
             line-height: 1.2;
         }
-        .hero-title .green-text {
-            color: #4caf4f;
+        .hero-title .blue-text {
+            color: #2E86AB;
         }
         .hero-description {
             font-size: 1.1rem;
@@ -95,8 +96,8 @@
             height: auto;
         }
         .register-btn {
-            background-color: #4caf4f;
-            color: white;
+            background-color: #2E86AB;
+            color: white !important;
             border: none;
             padding: 12px 30px;
             border-radius: 5px;
@@ -106,7 +107,7 @@
             transition: background-color 0.3s;
         }
         .register-btn:hover {
-            background-color: #45a049;
+            background-color: #1E5F7E;
         }
         .client {
             min-height: 50vh;
@@ -131,10 +132,13 @@
             flex-wrap: wrap;
         }
         .client-logos img {
-            height: 48px;
-            width: auto;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            height: 100px;
+            width: 100px;
+            object-fit: contain;
+            display: block;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         .client-logos img:hover {
             opacity: 1;
@@ -157,7 +161,7 @@
         }
         .helping-text h2 {
             font-size: 2.5rem;
-            color: #4CAF50;
+            color: #2E86AB;
             margin-bottom: 15px;
             line-height: 1.2;
         }
@@ -174,8 +178,8 @@
             text-align: right;
         }
         .register-btn-large {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #2E86AB;
+            color: white !important;
             border: none;
             padding: 15px 40px;
             border-radius: 8px;
@@ -189,12 +193,256 @@
             cursor: pointer;
         }
         .register-btn-large:hover {
-            background-color: #45a049;
+            background-color: #1E5F7E;
             color: white;
         }
         .arrow-icon-large {
             width: 20px;
             height: 20px;
+        }
+        .community-section img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .experience-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        .experience-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 0 20px;
+        }
+        .experience-image {
+            flex: 1;
+        }
+        .experience-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+        }
+        .experience-text {
+            flex: 1;
+            max-width: 500px;
+        }
+        .experience-text h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .experience-text p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .exp-btn {
+            background-color: #2E86AB;
+            color: white !important;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .exp-btn:hover {
+            background-color: #1E5F7E;
+        }
+        .about-section {
+            padding: 100px 20px;
+            background-color: #fff;
+        }
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        /* Footer Styles */
+        .footer {
+            background-color: #263238;
+            padding: 60px 0 40px;
+            border-top: 1px solid #37474f;
+            color: #e0e0e0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .footer-section p {
+            font-size: 0.9rem;
+            color: #b0bec5;
+            margin-bottom: 5px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: #37474f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0bec5;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .footer-section.links ul {
+            list-style: none;
+            padding: 0;
+        }   
+        .footer-section.links li {
+            margin-bottom: 12px;
+        }
+        .footer-section.links a {
+            color: #b0bec5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .footer-section.links a:hover {
+            color: #4CAF50;
+        }
+        .email-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .email-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #37474f;
+            background-color: #37474f;
+            color: #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .email-form input::placeholder {
+            color: #90a4ae;
+        }
+        .email-form input:focus {
+            border-color: #2E86AB;
+            background-color: #455a64;
+        }
+        .email-form button {
+            background-color: #2E86AB;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .email-form button:hover {
+            background-color: #1E5F7E;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        .community-section .col-md-4 {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .community-section .col-md-4:hover {
+            transform: translateY(-5px);
+        }
+        .community-section .card-icon-background {
+            background-color: #e8f5e9;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .community-section .card-icon-background img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        .community-section .col-md-4 h4 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .community-section .col-md-4 p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* Custom card button styling */
+        .card .btn-primary {
+            background-color: #2E86AB !important;
+            border-color: #2E86AB !important;
+            color: white !important;
+        }
+        .card .btn-primary:hover {
+            background-color: #1E5F7E !important;
+            border-color: #1E5F7E !important;
         }
     </style>
 </head>
@@ -202,17 +450,17 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center w-100">
-                <a href="#" class="navbar-brand">Nexcent</a>
+                <a class="navbar-brand" href="#">📚 LibriAspire</a>
                 <div class="navbar-nav">
                     <a href="#">Home</a>
                     <a href="#">Features</a>
                     <a href="#">Community</a>
                     <a href="#">Blog</a>
                     <a href="#">Pricing</a>
-                    <a href="#" class="register-btn">
-                        Register Now
-                        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <a class="register-btn" href="#">
+                        Pinjam Buku
+                        <svg class="arrow-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                     </a>
                 </div>
@@ -223,51 +471,142 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    Lessons and insights <span class="green-text">from 8 years</span>
+                    Pinjam Buku <span class="blue-text">Mudah & Cepat</span>
                 </h1>
                 <p class="hero-description">
-                    Where to grow your business as a photographer: site or social media?
+                    Platform peminjaman buku digital terlengkap. Akses ribuan koleksi buku dari berbagai genre. Pinjam kapan saja, di mana saja dengan proses yang simple dan cepat.
                 </p>
-                <button class="register-btn">Register</button>
+                <button class="register-btn">Mulai Pinjam Buku</button>
             </div>
             <div class="hero-image">
-                <img src="hero-image.png" alt="Person with laptop and monitor">
+                <img src="ChatGPT Image 27 Mar 2026, 15.20.18.png" alt="Person with laptop and monitor">
             </div>
         </div>
     </div>
+    
+    <!-- Book Cards Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Koleksi Buku Populer</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://placehold.co/200x280/2E86AB/FFFFFF?text=Buku+1" class="card-img-top" alt="Buku 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Pemrograman Web</h5>
+                        <p class="card-text">Panduan lengkap belajar pemrograman web modern.</p>
+                        <button class="btn btn-primary w-100">Pinjam Sekarang</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://placehold.co/200x280/2E86AB/FFFFFF?text=Buku+2" class="card-img-top" alt="Buku 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Desain Grafis</h5>
+                        <p class="card-text">Teknik dan prinsip desain grafis untuk pemula.</p>
+                        <button class="btn btn-primary w-100">Pinjam Sekarang</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://placehold.co/200x280/2E86AB/FFFFFF?text=Buku+3" class="card-img-top" alt="Buku 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Bisnis Digital</h5>
+                        <p class="card-text">Strategi membangun bisnis di era digital.</p>
+                        <button class="btn btn-primary w-100">Pinjam Sekarang</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://placehold.co/200x280/2E86AB/FFFFFF?text=Buku+4" class="card-img-top" alt="Buku 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Marketing Online</h5>
+                        <p class="card-text">Tips dan trik marketing di media sosial.</p>
+                        <button class="btn btn-primary w-100">Pinjam Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="client">
         <div class="container-fluid text-center">
-            <h2 class="client-title">Our Clients</h2>
-            <p class="client-description">We have been working with some Fortune 500+ clients</p>
+            <h2 class="client-title">Mitra Perpustakaan</h2>
+            <p class="client-description">Bekerja sama dengan berbagai penerbit dan perpustakaan terkemuka</p>
             <div class="client-logos">
-                <img src="https://placehold.co/120x48/4CAF50/FFFFFF?text=Client1" alt="Client Logo 1">
-                <img src="https://placehold.co/120x48/2196F3/FFFFFF?text=Client2" alt="Client Logo 2">
-                <img src="https://placehold.co/120x48/FF9800/FFFFFF?text=Client3" alt="Client Logo 3">
-                <img src="https://placehold.co/120x48/9C27B0/FFFFFF?text=Client4" alt="Client Logo 4">
-                <img src="https://placehold.co/120x48/F44336/FFFFFF?text=Client5" alt="Client Logo 5">
-                <img src="https://placehold.co/120x48/00BCD4/FFFFFF?text=Client6" alt="Client Logo 6">
-                <img src="https://placehold.co/120x48/795548/FFFFFF?text=Client7" alt="Client Logo 7">
+                <img src="client ( 1 ).png" alt="Client Logo 1">
+                <img src="client ( 2 ).png" alt="Client Logo 2">
+                <img src="client ( 3 ).png" alt="Client Logo 3">
+                <img src="client ( 4 ).png" alt="Client Logo 4">
+                <img src="client ( 5 ).png" alt="Client Logo 5">
+                <img src="client ( 6 ).png" alt="Client Logo 6">
             </div>
         </div>
     </div>
-     <hr>
-    <h1 style="text-align: center;">COMMUNITY 
-        <br>DIKERJAKAN MIS'HAL
-    </h1>
-    <hr>
-    <h1 style="text-align: center;">The unseen of spending three years at Pixelgrade diganti EXPERIENCE
-        <br>DIKERJAKAN ARKAN
-    </h1>
-    <hr>
+    <div class="community-section">
+        <div class="container text-center">
+            <h1>
+            Kelola koleksi buku Anda dalam satu sistem
+            </h1>
+            <p style="font-size:1.1rem; color:#666; margin-bottom:50px;">
+            Siapa saja yang bisa menggunakan LibriAspire?
+            </p>
+            <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+            <div class="card-icon-background">
+            <img src="community-icon ( 1 ).png" alt="Community Icon">
+            </div>
+                <h4>Pelajar & Mahasiswa</h4>
+                <p style="color:#666;">
+                Akses ribuan buku pelajaran dan referensi untuk mendukung proses belajar mengajar
+                </p>
+            </div>
+            <div class="col-md-4 mb-4">
+            <div class="card-icon-background">
+                <img src="community-icon ( 2 ).png" alt="Community Icon">
+            </div>
+                <h4>Perpustakaan Sekolah</h4>
+                <p style="color:#666;">
+                Sistem manajemen perpustakaan digital untuk memudahkan peminjaman dan pelacakan buku
+                </p>
+            </div>
+            <div class="col-md-4 mb-4">
+            <div class="card-icon-background">
+            <img src="community-icon ( 3 ).png" alt="Community Icon">
+            </div>
+                <h4>Komunitas Baca</h4>
+                <p style="color:#666;">
+                Platform untuk berbagi dan meminjam buku antar anggota komunitas pencinta buku
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://placehold.co/600x400/2E86AB/FFFFFF?text=Two+People+Illustration" alt="Two People Illustration">
+            </div>
+            <div class="about-text">
+                <h2>Pengalaman <span>Membaca Digital Terbaik</span></h2>
+                <p>
+                Kami telah mengembangkan platform peminjaman buku digital selama bertahun-tahun. Dari sistem katalog hingga aplikasi mobile, pengalaman kami membantu perpustakaan dan komunitas buku tumbuh lebih efisien di era digital.
+                </p>
+                <a href="#" class="register-btn">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </div>
     <div class="helping-section">
         <div class="helping-content">
             <div class="helping-text">
-                <h2><span>Helping a local</span> <br>business reinvent itself</h2>
-                <p>We reached here with our hard work and dedication. Join us to transform your business and achieve new heights.</p>
+                <h2><span>Membantu Anda</span> <br>menemukan buku favorit</h2>
+                <p>Kami mencapai ini dengan kerja keras dan dedikasi. Bergabunglah dengan kami untuk mengubah cara Anda membaca dan mencapai pengalaman membaca yang baru.</p>
             </div>
             <div class="helping-action">
                 <button class="register-btn-large">
-                    Register Now
+                    Mulai Sekarang
                     <svg class="arrow-icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -275,13 +614,70 @@
             </div>
         </div>
     </div>
-    <hr>
-    <h1>How to design your site footer like we did
-        <br> DIKERJAKAN BISMA
-    </h1>
-    <hr>
-    <h1>Tim Smith DIGANTI TIM 20 DENGAN DETAIL KITA ITU DARI PONDOK MANA
-        <br> DIKERJAKAN BILLY
-    </h1>
+    <div class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://placehold.co/600x400/2E86AB/FFFFFF?text=Mobile+App+Illustration" alt="Mobile App Illustration">
+            </div>
+            <div class="about-text">
+                <h2>Cara mendesain footer perpustakaan digital seperti yang kami lakukan</h2>
+                <p>
+                Platform LibriAspire dirancang untuk memudahkan pengelolaan perpustakaan digital. Dengan fitur pencarian canggih, sistem peminjaman otomatis, dan pelacakan real-time, pengelolaan koleksi buku menjadi lebih efisien. Antarmuka yang intuitif memastikan pengguna dapat dengan mudah menemukan dan meminjam buku yang mereka butuhkan.
+                </p>
+                <a href="#" class="register-btn">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <div class="logo-footer">
+                        <h3>📚 LibriAspire</h3>
+                    </div>
+                    <p>Copyright © 2026 Team 20 LibriAspire Platform.</p>
+                    <p>Hak cipta dilindungi</p>
+                    <div class="social-icons">
+                        <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg></a>
+                        <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg></a>
+                        <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+                        <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h4>Tentang</h4>
+                    <ul>
+                        <li><a href="#">Tentang kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Hubungi kami</a></li>
+                        <li><a href="#">Harga</a></li>
+                        <li><a href="#">Testimoni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h4>Bantuan</h4>
+                    <ul>
+                        <li><a href="#">Pusat bantuan</a></li>
+                        <li><a href="#">Syarat layanan</a></li>
+                        <li><a href="#">Legal</a></li>
+                        <li><a href="#">Kebijakan privasi</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section newsletter">
+                    <h4>Dapatkan info terbaru</h4>
+                    <div class="email-form">
+                        <input type="email" placeholder="Alamat email Anda">
+                        <button type="submit">
+                            <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
