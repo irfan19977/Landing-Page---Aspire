@@ -1,0 +1,301 @@
+`<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibrAspire - Find and Borrow Books Easily</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e293b',
+                        secondary: '#334155',
+                        accent: '#3b82f6',
+                        'text-secondary': '#64748b',
+                        'border-color': '#e2e8f0',
+                        'bg-light': '#f8fafc',
+                        'card-bg': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .shape {
+            position: absolute;
+            bottom: 0;
+            width: 200px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .shape-1 { left: 0; }
+        .shape-2 { right: 0; }
+        .step { transition: all 0.3s; }
+        .step:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .book-card, .category-item { transition: transform 0.3s, box-shadow 0.3s; }
+        .book-card:hover, .category-item:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="font-sans bg-bg-light text-primary leading-relaxed">
+
+    <header class="bg-card-bg shadow-md sticky top-0 z-50 pt-4">
+        <div class="container max-w-6xl mx-auto px-5">
+            <div class="flex flex-wrap justify-between items-center pb-4">
+                <h1 id="logo" class="text-[1.8rem] font-bold text-primary cursor-pointer">LibrAspire</h1>
+                <nav class="flex gap-4">
+                    <a href="#" class="nav-link text-text-secondary font-medium hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="#" class="nav-link text-text-secondary font-medium hover:text-primary transition-colors duration-300">Catalog</a>
+                    <a href="#" class="nav-link text-text-secondary font-medium hover:text-primary transition-colors duration-300">About</a>
+                    <a href="#" class="nav-link text-text-secondary font-medium hover:text-primary transition-colors duration-300">Contact</a>
+                </nav>
+                <div class="auth-buttons flex gap-2">
+                    <button id="loginBtn" class="btn-outline px-4 py-2 rounded-md font-medium transition-all duration-300 bg-transparent border border-border-color text-primary hover:bg-bg-light">Login</button>
+                    <button class="btn-primary px-4 py-2 rounded-md font-medium transition-all duration-300 bg-primary text-white hover:bg-secondary hover:-translate-y-0.5 hover:shadow-lg">Register</button>
+                </div>
+                <p class="tagline text-text-secondary text-sm w-full text-right mt-2">
+                    <strong>Temukan</strong> dan <em>pinjam</em> buku dengan mudah.<br>Lebih dari 12.000 buku tersedia.
+                </p>
+            </div>
+            <hr class="border-t border-border-color">
+        </div>
+    </header>
+
+    <main>
+        <section class="hero py-16 text-center bg-gradient-to-br from-[#f0f4f8] to-white relative overflow-hidden">
+            <div class="container max-w-6xl mx-auto px-5 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-4">Find and Borrow Books Easily</h2>
+                <p class="text-xl text-text-secondary mb-8">Access thousands of books anytime, anywhere.</p>
+                <img class="hero-image max-w-full h-auto mb-8 rounded-lg shadow-md mx-auto" src="https://via.placeholder.com/600x300" alt="Digital Library Illustration">
+                <div class="search-box flex justify-center gap-2 max-w-md mx-auto">
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or category..." class="flex-1 px-4 py-3 border border-border-color rounded-full text-base outline-none focus:border-accent transition-colors">
+                    <button id="searchBtn" class="btn btn-primary px-6 py-3 rounded-full font-medium transition-all duration-300 bg-primary text-white hover:bg-secondary hover:-translate-y-0.5 hover:shadow-lg">Cari</button>
+                </div>
+                <button onclick="sapa()" class="btn btn-outline mt-4">Klik Saya</button>
+                <img class="shape shape-1 absolute bottom-0 left-0 w-48 opacity-50 pointer-events-none" src="https://via.placeholder.com/200x100?text=Shape" alt="">
+                <img class="shape shape-2 absolute bottom-0 right-0 w-48 opacity-50 pointer-events-none" src="https://via.placeholder.com/200x100?text=Shape" alt="">
+            </div>
+        </section>
+
+        <section class="categories py-16 bg-white">
+            <div class="container max-w-6xl mx-auto px-5">
+                <h2 class="text-3xl font-bold text-primary text-center mb-8">Book Categories</h2>
+                <ul class="categories-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">Technology (2,500 books)</li>
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">Science (1,800 books)</li>
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">Novel (4,200 books)</li>
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">Business (1,500 books)</li>
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">History (1,200 books)</li>
+                    <li class="category-item bg-[#f1f5f9] p-6 rounded-xl text-center font-medium cursor-pointer transition-all">Education (1,300 books)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="popular-books py-16 bg-bg-light">
+            <div class="container max-w-6xl mx-auto px-5">
+                <h2 class="text-3xl font-bold text-primary text-center mb-8">Popular Books</h2>
+                <div class="books-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <article class="book-card bg-white border border-border-color rounded-lg p-4 transition-all">
+                        <img class="book-cover w-full h-auto mb-3 rounded" src="https://via.placeholder.com/100x150" alt="Book cover">
+                        <h3 class="text-base font-semibold text-primary mb-2">The Subtle Art of Not Giving a F*ck</h3>
+                        <p class="text-sm text-text-secondary mb-2">Penulis: Mark Manson (2016)</p>
+                        <p class="text-sm">Status: <span class="badge inline-block px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-800">Available</span></p>
+                    </article>
+                    <article class="book-card bg-white border border-border-color rounded-lg p-4 transition-all">
+                        <img class="book-cover w-full h-auto mb-3 rounded" src="https://via.placeholder.com/100x150" alt="Book cover">
+                        <h3 class="text-base font-semibold text-primary mb-2">Atomic Habits</h3>
+                        <p class="text-sm text-text-secondary mb-2">Penulis: James Clear (2018)</p>
+                        <p class="text-sm">Status: <span class="badge inline-block px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-800">Available</span></p>
+                    </article>
+                    <!-- tambahkan lebih banyak buku sesuai kebutuhan -->
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works py-16 bg-white">
+            <div class="container max-w-6xl mx-auto px-5">
+                <h2 class="text-3xl font-bold text-primary text-center mb-8">How It Works</h2>
+                <div class="step bg-bg-light p-4 rounded-lg mb-4 transition-all">
+                    <span class="step-number font-bold text-primary">1. Register</span> - Buat akun gratis.
+                </div>
+                <div class="step bg-bg-light p-4 rounded-lg mb-4 transition-all">
+                    <span class="step-number font-bold text-primary">2. Search Book</span> - Temukan buku yang diinginkan.
+                </div>
+                <div class="step bg-bg-light p-4 rounded-lg mb-4 transition-all">
+                    <span class="step-number font-bold text-primary">3. Request Borrow</span> - Ajukan peminjaman.
+                </div>
+                <div class="step bg-bg-light p-4 rounded-lg mb-4 transition-all">
+                    <span class="step-number font-bold text-primary">4. Pick Up Book</span> - Ambil buku di perpustakaan.
+                </div>
+            </div>
+        </section>
+
+        <section class="statistics py-16 bg-bg-light">
+            <div class="container max-w-6xl mx-auto px-5">
+                <h2 class="text-3xl font-bold text-primary text-center mb-8">Statistics</h2>
+                <div class="stats-grid flex justify-center gap-8 flex-wrap">
+                    <p class="stat-item text-center"><strong class="text-3xl font-extrabold block text-primary">12.500+</strong> Books</p>
+                    <p class="stat-item text-center"><strong class="text-3xl font-extrabold block text-primary">3.200+</strong> Members</p>
+                    <p class="stat-item text-center"><strong class="text-3xl font-extrabold block text-primary">850+</strong> Monthly Borrows</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact py-16 bg-white">
+            <div class="container max-w-6xl mx-auto px-5">
+                <h2 class="text-3xl font-bold text-primary text-center mb-8">Contact Us</h2>
+                <form id="contactForm" class="contact-form max-w-lg mx-auto" action="#" method="post">
+                    <div class="form-group mb-6">
+                        <label for="name" class="block mb-2 font-medium text-primary">Nama Lengkap:</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-border-color rounded-md text-base focus:outline-none focus:border-accent transition-colors">
+                    </div>
+                    <div class="form-group mb-6">
+                        <label for="email" class="block mb-2 font-medium text-primary">Email:</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-border-color rounded-md text-base focus:outline-none focus:border-accent transition-colors">
+                    </div>
+                    <div class="form-group mb-6">
+                        <label for="message" class="block mb-2 font-medium text-primary">Pesan:</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-border-color rounded-md text-base focus:outline-none focus:border-accent transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 rounded-md font-medium transition-all duration-300 bg-primary text-white hover:bg-secondary hover:-translate-y-0.5 hover:shadow-lg">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-primary text-white py-8 text-center">
+        <div class="container max-w-6xl mx-auto px-5">
+            <hr class="border-t border-secondary mb-4">
+            <p>&copy; 2025 LibrAspire. <span>All rights reserved.</span></p>
+            <p class="footer-links mt-2">
+                <a href="mailto:support@libraspire.com" class="text-[#cbd5e1] hover:text-white transition-colors mx-2">Email</a> |
+                <a href="#" target="_blank" class="text-[#cbd5e1] hover:text-white transition-colors mx-2">Twitter</a> |
+                <a href="#" target="_blank" class="text-[#cbd5e1] hover:text-white transition-colors mx-2">Facebook</a> |
+                <a href="#" target="_blank" class="text-[#cbd5e1] hover:text-white transition-colors mx-2">Instagram</a>
+            </p>
+            <address class="not-italic mt-4 text-[#94a3b8]">
+                Jl Raya ITS, Surabaya, Indonesia
+            </address>
+        </div>
+    </footer>
+
+    <script>
+        // Fase 1 & 2: Hello JS dan variabel (sudah dihapus setelah demo)
+        // Fase 3: Fungsi Sapa
+        function sapa() {
+            alert("Selamat datang di LibrAspire!");
+        }
+
+        // Fase 4: DOM - Event Listener Logo
+        const logo = document.getElementById("logo");
+        if (logo) {
+            logo.addEventListener("click", function() {
+                alert("Logo diklik!");
+            });
+        }
+
+        // Fase 5: Active Menu Navbar
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('text-primary', 'font-bold'));
+                this.classList.add('text-primary', 'font-bold');
+            });
+        });
+
+        // Fase 6: Toggle Status Buku
+        const badges = document.querySelectorAll(".badge");
+        badges.forEach(badge => {
+            badge.addEventListener("click", function() {
+                if (this.innerText === "Available") {
+                    this.innerText = "Borrowed";
+                    this.classList.remove("bg-green-100", "text-green-800");
+                    this.classList.add("bg-red-100", "text-red-800");
+                } else if (this.innerText === "Borrowed") {
+                    this.innerText = "Available";
+                    this.classList.remove("bg-red-100", "text-red-800");
+                    this.classList.add("bg-green-100", "text-green-800");
+                }
+            });
+        });
+
+        // Fase 7: Search Filter Buku
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchBtn");
+        const books = document.querySelectorAll(".book-card");
+
+        function filterBooks() {
+            const keyword = searchInput.value.toLowerCase();
+            books.forEach(book => {
+                const title = book.querySelector("h3").innerText.toLowerCase();
+                if (title.includes(keyword)) {
+                    book.style.display = "block";
+                } else {
+                    book.style.display = "none";
+                }
+            });
+        }
+
+        if (searchBtn) {
+            searchBtn.addEventListener("click", filterBooks);
+            searchInput.addEventListener("keyup", filterBooks);
+        }
+
+        // Fase 8: Form Validation
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+            contactForm.addEventListener("submit", function(e) {
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const message = document.getElementById("message").value.trim();
+
+                if (name === "") {
+                    alert("Nama wajib diisi!");
+                    e.preventDefault();
+                    return;
+                }
+                if (email === "") {
+                    alert("Email wajib diisi!");
+                    e.preventDefault();
+                    return;
+                }
+                if (!email.includes("@") || !email.includes(".")) {
+                    alert("Format email tidak valid!");
+                    e.preventDefault();
+                    return;
+                }
+                if (message === "") {
+                    alert("Pesan wajib diisi!");
+                    e.preventDefault();
+                    return;
+                }
+
+                alert("Pesan berhasil dikirim (demo)");
+                e.preventDefault(); // untuk demo
+            });
+        }
+
+        // Fase 9: Login Sederhana
+        const loginBtn = document.getElementById("loginBtn");
+        if (loginBtn) {
+            loginBtn.addEventListener("click", function() {
+                const username = prompt("Masukkan username:");
+                const password = prompt("Masukkan password:");
+
+                if (username === "admin" && password === "123") {
+                    alert("Login berhasil! Selamat datang, " + username);
+                    loginBtn.innerText = "Logout";
+                    loginBtn.classList.remove("btn-outline", "bg-transparent", "border", "border-border-color");
+                    loginBtn.classList.add("btn-primary", "bg-primary", "text-white");
+                } else {
+                    alert("Username atau password salah!");
+                }
+            });
+        }
+
+        console.log("JavaScript LibrAspire loaded");
+    </script>
+</body>
+</html>
